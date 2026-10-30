@@ -4,7 +4,7 @@ title: '#4471 · two problems, not one'
 owner: Bohdan Kosenko
 status: closed
 reviewed: 2026-10-29
-signature: Bohdan Kosenko
+signature: v1.eyJzdWIiOiI0NTciLCJhdWQiOiJjaGFsbGVuZ2U6d2hhdC1pdC1zaG93cyIsImlhdCI6MTc5MzMzMTk1NywiZXhwIjoxNzkzNDE4MzU3fQ.abCLWmuopD3C6SYrfO-IrWwTg8y9eVgm9M1x98vvz5Q
 ---
 
 <script>
