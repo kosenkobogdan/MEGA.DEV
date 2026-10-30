@@ -1,0 +1,59 @@
+---
+layout: runbook
+title: '#4471 · two problems, not one'
+owner: Bohdan Kosenko
+status: living
+reviewed: 2026-10-29
+signature: Bohdan Kosenko
+---
+
+<script>
+  import CauseTable from '#lib/kb/CauseTable.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+  let { signature } = $props();
+</script>
+
+#4471 was marked known: one parser bug, one fix queued. The table below is the
+same grouping the desk already ships. It is not one cause.
+
+The merge rule is [decision 0001](/kb/decisions/0001-dedupe-by-subject): lowercase
+the subject, strip punctuation, merge. Parser reports and hint reports share
+those subjects, so they landed in one ticket.
+
+## Two problems
+
+**parser.** The shared parser reads every date month first. Day-first tenants
+(`en-GB`, `de-DE`, and the rest on file) write the day first. Bookings flip:
+4 July becomes 7 April. App, email, and booking-v2 form reports are this bug.
+
+**hint.** A different bug. booking-v3 prints `MM/DD/YYYY` under the date field.
+People type what the hint says. The form still reads the tenant's day-first
+order. Only form reports from alder.physio, copper.studio, and pale.harbour.
+
+Intake's `intakeTag` is a browser guess. It disagrees with tenant cause often
+enough that the tag is not the split.
+
+<Callout kind="warn">
+Known was wrong. One ticket hid a second bug that needs its own fix.
+</Callout>
+
+## What was merged into #4471
+
+<CauseTable ticket={4471} />
+
+The row that is not this ticket is the hint bug: no ticket of its own. One
+GitHub ticket per cause, with the report count the table computes:
+
+- parser → [#1](https://github.com/kosenkobogdan/MEGA.DEV/issues/1)
+- hint → [#2](https://github.com/kosenkobogdan/MEGA.DEV/issues/2)
+
+Reports the desk read as a one-day move stay in the parser row, footnoted there.
+They are not a third cause in this grouping.
+
+## Why the merge happened
+
+Triage never reads the body and never asks `causeOf`. During an incident that is
+fast. It is also how two date bugs become one known issue.
+
+<RenderStamp {signature} />
