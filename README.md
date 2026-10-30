@@ -1,0 +1,2 @@
+# MEGA.DEV
+course artifacts
