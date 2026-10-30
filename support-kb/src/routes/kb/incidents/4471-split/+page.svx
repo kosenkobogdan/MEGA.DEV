@@ -2,7 +2,7 @@
 layout: runbook
 title: '#4471 · two problems, not one'
 owner: Bohdan Kosenko
-status: living
+status: closed
 reviewed: 2026-10-29
 signature: Bohdan Kosenko
 ---
@@ -50,6 +50,11 @@ GitHub ticket per cause, with the report count the table computes:
 
 Reports the desk read as a one-day move stay in the parser row, footnoted there.
 They are not a third cause in this grouping.
+
+## Engineering · #4471 closed 05 Oct
+
+- parser — **fixed.** `fix(dates): parse dd/mm for eu locales`
+- hint — **won't fix.** booking-v3 form retired
 
 ## Why the merge happened
 
